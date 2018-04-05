@@ -1,9 +1,11 @@
 import sys
+import os
 import time
 from PIL import Image, ImageDraw
 from models.tiny_yolo import TinyYoloNet
 from utils import *
 from darknet import Darknet
+root_path = os.getcwd()
 
 
 def detect(cfgfile, weightfile, imgfile):
@@ -15,11 +17,11 @@ def detect(cfgfile, weightfile, imgfile):
 
 	num_classes = 80
 	if num_classes == 20:
-		namesfile = 'data/voc.names'
+		namesfile = root_path + '/data/voc.names'
 	elif num_classes == 80:
-		namesfile = 'data/coco.names'
+		namesfile = root_path + '/data/coco.names'
 	else:
-		namesfile = 'data/names'
+		namesfile = root_path + '/data/names'
 
 	use_cuda = 1
 	if use_cuda:
